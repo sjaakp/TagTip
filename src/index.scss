@@ -1,0 +1,72 @@
+
+.tagtip {
+  position: relative;
+}
+
+.tt-editor  {
+  background-color:  lightgoldenrodyellow;
+  border: 1px solid lightgrey;
+  outline-color: lightgrey;
+  padding: .3em;
+  display: flex;
+  min-height: 2.1em;
+  gap: .5em;
+  &[contenteditable=true] {
+    background-color: transparent;
+  }
+}
+
+.tt-tag {
+  background-color: lightblue;
+  border-radius: 4px;
+  padding-left: .3em;
+  &.tt-active {
+    background-color: #0a9ada;
+  }
+  &:after {
+    display: inline-block;
+    content: '\00d7';
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    width: 16px;
+  }
+  /*
+  &:hover {
+    &:after {
+      color: #0d47a1;
+    }
+  }
+  */
+  &:empty {
+    //padding-left: 0;
+    &:after {
+      display: none;
+    }
+  }
+  &.tt-draggedover {
+    background-color: #0a9ada;
+  }
+}
+
+.tt-suggs {
+  display: none;
+  background-color: white;
+  border: 1px solid lightgrey;
+  width: max-content;
+  margin-top: .3em;
+  position: absolute;
+  &.tt-show {
+    display: block;
+  }
+}
+
+.tt-sugg {
+  padding: 0 .2em;
+  &.tt-active {
+    background-color: lightskyblue;
+  }
+  &:hover  {
+    background-color: lightblue;
+  }
+}
