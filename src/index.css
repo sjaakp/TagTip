@@ -1,0 +1,105 @@
+
+.tagtip-wrap {
+    /*background-color: lightgrey;*/
+    position: relative;
+    padding: var(--tt-padding, .2em);
+    border: var(--tt-border-width, 1px) solid var(--tt-border, ButtonBorder);
+    border-radius: var(--tt-radius, .3em);
+}
+
+.tagtip-list {
+    /*background-color: lightcyan;*/
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding-inline: 0;
+    li {
+        &:not(.tagtip-dragged):has(.tagtip-tag:focus)    {
+            .tagtip-tag,
+            .tagtip-delete {
+                background-color: lightgreen;
+            }
+        }
+        &:has(.tagtip-tag:empty) {
+            .tagtip-delete {
+                background-color: transparent;
+                &:before {
+                    content: initial;
+                }
+            }
+        }
+        /*
+        &:has(.tagtip-tag:focus) .tagtip-suggest:not(:empty) {
+            display: initial;
+        }
+        */
+    }
+}
+
+.tagtip-drop {
+    display: inline-block;
+    /*background-color: lightgoldenrodyellow;*/
+    width: 1em;
+    height: 1lh;
+    vertical-align: bottom;
+}
+
+/*
+.tagtip-target {
+    width: 2em;
+}
+*/
+.tagtip-tag,
+.tagtip-delete {
+    background-color: lightblue;
+}
+
+.tagtip-tag {
+    padding-inline: .5em;
+    border-top-left-radius: 100em;
+    border-bottom-left-radius: 100em;
+    outline: none;
+    &:empty {
+        background-color: transparent;
+    }
+}
+
+.tagtip-delete {
+    padding-inline: .3em;
+    border-top-right-radius: 100em;
+    border-bottom-right-radius: 100em;
+    &:before {
+        content: 'x';
+        font-size: 85%;
+        font-weight: bold;
+        color: grey;
+        /*content: '\d7';*/   /* doesn't work! disturbs list */
+    }
+    &:hover:before {
+        color: blue;
+    }
+}
+
+.tagtip-suggest {
+    position: absolute;
+    top: 1.2lh;
+    list-style: none;
+    padding-inline: 0;
+    background-color: var(--tt-canvas, Canvas);
+    border: 1px solid var(--tt-border, ButtonBorder);
+    &:empty {
+        display: none;
+    }
+    li {
+        /*background-color: lightsalmon;*/
+        padding-inline: .5em;
+        &:hover {
+            background-color: salmon;
+        }
+    }
+}
+
+.tagtip-pick {
+    background-color: var(--tt-bg-pick, blue /* AccentColor - not yet in Chrome 124 */);
+    color: var(--tt-pick, white /* AccentColorText */);
+}
